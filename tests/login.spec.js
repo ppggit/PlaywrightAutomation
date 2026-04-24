@@ -2,13 +2,11 @@ const { test, expect } = require('./fixtures/app.fixture');
 
 test('login page object example', async ({ app }) => {
   await app.loginPage.goto();
-  await app.loginPage.login('user@example.com', 'password123');
+  await app.loginPage.login('tomsmith', 'SuperSecretPassword!');
 
-  await expect(app.loginPage.page.locator('text=Logout')).toBeVisible();
+  await expect(app.secureAreaPage.dashboardHeader).toBeVisible();
 
-  await app.dashboardPage.goto();
-  await expect(app.dashboardPage.dashboardHeader).toBeVisible();
-
-  await app.profilePage.goto();
-  await expect(app.profilePage.profileHeader).toBeVisible();
+  await app.dropdownPage.goto();
+  await app.dropdownPage.selectOption('1');
+  await expect(app.dropdownPage.dropdown).toHaveValue('1');
 });

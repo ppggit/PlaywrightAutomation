@@ -1,13 +1,13 @@
 class LoginPage {
   constructor(page) {
     this.page = page;
-    this.usernameField = page.locator('input[name="username"]');
-    this.passwordField = page.locator('input[name="password"]');
+    this.usernameField = page.locator('#username');
+    this.passwordField = page.locator('#password');
     this.signInButton = page.locator('button[type="submit"]');
   }
 
   async goto() {
-    await this.page.goto('https://example.com/login');
+    await this.page.goto('https://the-internet.herokuapp.com/login');
   }
 
   async login(username, password) {
@@ -17,7 +17,7 @@ class LoginPage {
   }
 
   async isLoggedIn() {
-    return this.page.locator('text=Logout').isVisible();
+    return this.page.locator('h2', { hasText: 'Secure Area' }).isVisible();
   }
 }
 

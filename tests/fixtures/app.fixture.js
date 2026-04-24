@@ -1,14 +1,14 @@
 const { test: base, expect } = require('@playwright/test');
 const LoginPage = require('../../pages/LoginPage');
-const DashboardPage = require('../../pages/DashboardPage');
-const ProfilePage = require('../../pages/ProfilePage');
+const SecureAreaPage = require('../../pages/SecureAreaPage');
+const DropdownPage = require('../../pages/DropdownPage');
 
 const test = base.extend({
   app: async ({ page }, use) => {
     const app = {
       loginPage: new LoginPage(page),
-      dashboardPage: new DashboardPage(page),
-      profilePage: new ProfilePage(page),
+      secureAreaPage: new SecureAreaPage(page),
+      dropdownPage: new DropdownPage(page),
     };
     await use(app);
   },
