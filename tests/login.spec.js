@@ -1,14 +1,14 @@
 const { test, expect } = require('./fixtures/loginPage.fixture');
 
-test('login page object example', async ({ loginPage, dashboardPage, profilePage }) => {
-  await loginPage.goto();
-  await loginPage.login('user@example.com', 'password123');
+test('login page object example', async ({ app }) => {
+  await app.loginPage.goto();
+  await app.loginPage.login('user@example.com', 'password123');
 
-  await expect(loginPage.page.locator('text=Logout')).toBeVisible();
+  await expect(app.loginPage.page.locator('text=Logout')).toBeVisible();
 
-  await dashboardPage.goto();
-  await expect(dashboardPage.dashboardHeader).toBeVisible();
+  await app.dashboardPage.goto();
+  await expect(app.dashboardPage.dashboardHeader).toBeVisible();
 
-  await profilePage.goto();
-  await expect(profilePage.profileHeader).toBeVisible();
+  await app.profilePage.goto();
+  await expect(app.profilePage.profileHeader).toBeVisible();
 });

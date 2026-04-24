@@ -4,19 +4,13 @@ const DashboardPage = require('../../pages/DashboardPage');
 const ProfilePage = require('../../pages/ProfilePage');
 
 const test = base.extend({
-  loginPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await use(loginPage);
-  },
-
-  dashboardPage: async ({ page }, use) => {
-    const dashboardPage = new DashboardPage(page);
-    await use(dashboardPage);
-  },
-
-  profilePage: async ({ page }, use) => {
-    const profilePage = new ProfilePage(page);
-    await use(profilePage);
+  app: async ({ page }, use) => {
+    const app = {
+      loginPage: new LoginPage(page),
+      dashboardPage: new DashboardPage(page),
+      profilePage: new ProfilePage(page),
+    };
+    await use(app);
   },
 });
 
