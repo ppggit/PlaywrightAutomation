@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures/loginPage.fixture');
+const { test, expect } = require('./fixtures/app.fixture');
 
 test('login page object example', async ({ app }) => {
   await app.loginPage.goto();
